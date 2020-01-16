@@ -9,7 +9,7 @@ const {Content, Footer } = Layout;
 const Layouts = ({children, location, selectedMenu}) => {
     console.log('api' , auth.url, auth.reqOptions);
     return (
-        <AuthProvider authUrl={auth.url+'/user'} reqOptions={request.getReqOption()}>
+        // <AuthProvider authUrl={auth.url+'/user'} reqOptions={request.getReqOption()}>
             <Layout className="layout">
                 <HeaderMenu selected={selectedMenu}/>
                 <Content style={{ padding: '0 50px' }}>
@@ -28,7 +28,7 @@ const Layouts = ({children, location, selectedMenu}) => {
                     & <a target="blank" href="https://twitter.com/Mhzaman2"> Hasanuzzaman </a>
                 </Footer>
             </Layout>
-        </AuthProvider>
+        // </AuthProvider>
     );
 }
 

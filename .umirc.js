@@ -24,6 +24,10 @@ export default {
           component: './favorites',
         },
         {
+          path: '/hadith',
+          component: './hadith',
+        },
+        {
           path: '/',
           title: 'Surah',
           component: './surah',
@@ -56,11 +60,11 @@ export default {
         },
       },
     ],
-  ],
-  proxy: {
-    '/api/': {
-      target: 'http://quran-api.test/api/',
-      changeOrigin: true, // pathRewrite: { '^/api/v1/weather': '/v3/weather' },
-    },
-  },
+  ], // https://umijs.org/config/#proxy
+  // proxy: {
+  //   '/api/': {
+  //     target: 'http://quran-api.devforislam.xyz/',
+  //     changeOrigin: true
+  //   },
+  // },
 };

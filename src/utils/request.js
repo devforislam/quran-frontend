@@ -1,7 +1,7 @@
 import {fetch} from 'dva';
 import * as auth from '../services/auth'
 
-const url = 'http://quran-api.test/api';
+const url = 'http://quran-api.devforislam.xyz/api';
 
 
 export const getReqOption = () => (
@@ -38,7 +38,8 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export function request(reqUrl, options) {
-  options = {...reqOptions, ...options};
+  const defaultOptions = getReqOption();
+  options = {...defaultOptions, ...options};
   console.log(reqUrl, options);
 
   return fetch(reqUrl, options)

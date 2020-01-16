@@ -20,10 +20,12 @@ class NormalLoginForm extends React.Component {
           .then((data) => {
             if (data.err) {
               data.err.response.json().then(errData => {
+                console.log(errData);
+
                 this.props.form.setFields({
                   password: {
                     value: values.password,
-                    errors: [new Error(errData.error.message)],
+                    errors: [new Error(errData.message || 'Something is wrong!')],
                   },
                 });
               });

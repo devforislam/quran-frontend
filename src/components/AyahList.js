@@ -40,7 +40,7 @@ const AyahList = ({
                 >
                 <List.Item.Meta style={{ paddingRight: 15, marginBottom: 0}}
                   avatar={
-                    <Tooltip title={auth.check() ? `Mark as ${item.is_favorite ? 'unfavorite' : 'favorite'}` : ''}>
+                    <Tooltip title={auth.check() ? `${item.is_favorite ? 'Undo favorite' : 'Mark as favorite'}` : ''}>
                       <Avatar style={{cursor: 'pointer', backgroundColor: item.is_favorite ? '#1890ff': 'gray'}} onClick={() => markAsFavorite(item.surah_id, item.verse_id)}>{item.verse_id}</Avatar>
                     </Tooltip>
                   }

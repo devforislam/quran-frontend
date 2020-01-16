@@ -1,8 +1,11 @@
+/**
+ * title: Read Quran|DevForIslam
+ */
+
 import React from 'react';
 import { connect } from 'dva';
 import AyahList from '../components/AyahList';
 import { Select, Row, Col, Input, Badge, BackTop, Switch} from 'antd';
-import Layout from '../components/Layouts/Layouts';
 import AudioPlayer from '../components/AudioPlayer';
 
 const Option = Select.Option;

@@ -70,7 +70,7 @@ export default {
       return {...state, currentSurah};
     },
     addLanguage(state, payload) {
-      return {...state, languageList: payload.language}
+      return {...state, languageList: payload.language || []}
     },
     setLanguage(state, {payload}) {
       return {...state, selectedLang: payload}

@@ -4,8 +4,9 @@ import React from 'react';
 import { connect } from 'dva';
 import AyahList from '../components/AyahList';
 import { Select, Row, Col} from 'antd';
-import Layout from '../components/Layouts/Layouts';
 import AudioPlayer from '../components/AudioPlayer';
+import * as auth from '../services/auth';
+import {Redirect} from 'umi';
 
 const Option = Select.Option;
 
@@ -51,21 +52,25 @@ const Favorits = ({
       payload: {chapter_id: surahId, verse_id: verseId},
     });
   }
-  console.log('items.......', items);
+
+  if (! auth.check()) {
+
+    return <Redirect to="/login"></Redirect>
+  }
 
   return (
     <div>
-      <Row type="flex" justify="center">         
+      {/* <Row type="flex" justify="center">         
         <Col className="gutter-row" span={6}>
          <h1>
-          <AudioPlayer srcFiles={items.map(item => item.audio_url)} setAudioStatus={setAudioStatus}></AudioPlayer>
+          <AudioPlayer srcFiles={(items||[]).map(item => item.audio_url)} setAudioStatus={setAudioStatus}></AudioPlayer>
           </h1>
         </Col>        
       </Row>
-      
+       */}
       {/* {currentSurah.name && <h2 style={{textAlign: 'center'}}> Surah {currentSurah.name}</h2>} */}
       
-      <AyahList verses={items} 
+      <AyahList verses={items || []} 
         selectedLang={selectedLang} 
         // onSearch={onSearch} 
         addTag={addTag} 

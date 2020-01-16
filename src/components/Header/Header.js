@@ -19,7 +19,7 @@ const HeaderMenu = ({selected}) => {
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={[selected]}
-                    style={{ lineHeight: '65px'}}
+                    style={{ lineHeight: '64px'}}
                 >
                     {menu.map(item=> <MenuItem key={item.key} style={{ backgroundColor: 'inherit', textColor: selected === item.key ? 'rgb(212, 136, 6)' : '' }}><Link to={item.path}>{ item.label} </Link></MenuItem>)}
                     { auth.check() ? 
