@@ -8,28 +8,31 @@ export default {
       routes: [
         {
           path: '/surah',
-          title: 'Surah',
           component: './surah',
         },
         {
           path: '/login',
+          title: 'Login',
           component: './login',
         },
         {
           path: '/register-user',
+          title: 'Register User',
           component: './register-user',
         },
         {
           path: '/favorites',
+          title: 'My Favorites',
           component: './favorites',
         },
         {
           path: '/hadith',
+          title: 'Hadith',
           component: './hadith',
         },
         {
           path: '/',
-          title: 'Surah',
+          title: 'Surah | Read Quran',
           component: './surah',
         },
         {
@@ -60,7 +63,8 @@ export default {
         },
       },
     ],
-  ], // https://umijs.org/config/#proxy
+  ], 
+  // https://umijs.org/config/#proxy
   // proxy: {
   //   '/api/': {
   //     target: 'http://quran-api.devforislam.xyz/',
