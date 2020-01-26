@@ -20,18 +20,18 @@ class HeaderMenu extends Component {
     if (this.props.isMobile) {
       headerStyle['padding'] = 0;
     }
-
+    const selectedMenu = this.props.selected ||'home';
     return ( 
       <Header  style={headerStyle}>
         <div className="logo" />
         <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={[this.props.selected]}
+            defaultSelectedKeys={[selectedMenu]}
             style={{ lineHeight: '64px', padding: 0}}
         >
             {menu.map(item=> 
-              <MenuItem key={item.key} style={{ backgroundColor: 'inherit', textColor: this.props.selected === item.key ? 'rgb(212, 136, 6)' : '' }}>
+              <MenuItem key={item.key} style={{ backgroundColor: 'inherit', textColor: selectedMenu === item.key ? 'rgb(212, 136, 6)' : '' }}>
                 <Link to={item.path}> { item.label} </Link>
               </MenuItem>
             )}
