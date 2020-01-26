@@ -66,7 +66,7 @@ class Layouts extends React.PureComponent {
                         <Breadcrumb.Item>List</Breadcrumb.Item>
                         <Breadcrumb.Item>App</Breadcrumb.Item> */}
                     </Breadcrumb>
-                    <div style={{ background: '#fff', padding: isMobile ? 0 : 24, minHeight: 280 }}>
+                    <div style={{ background: isMobile ? 'inherit' : '#fff', padding: isMobile ? 0 : 24, minHeight: 280 }}>
                         {childrenToRender}
                     </div>
                 </Content>

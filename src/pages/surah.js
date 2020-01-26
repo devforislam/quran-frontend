@@ -5,6 +5,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import AyahList from '../components/AyahList';
+import AyahListMobile from '../components/AyahListMobile';
 import { Select, Row, Col, Input, Badge, BackTop, Switch} from 'antd';
 import AudioPlayer from '../components/AudioPlayer';
 
@@ -94,6 +95,7 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
     onSearch(searchId);
   }; 
   console.log('Others props', restProps);
+  const AyahComponent = isMobile ? AyahListMobile : AyahList;
   return (
     <div style={{
       // margin: -24
@@ -158,7 +160,7 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
              
       </Row>
       <div style={{padding: isMobile ? '15px 10px' : 24}} effect='fade'>
-        <AyahList verses={currentSurah.verses} 
+        <AyahComponent verses={currentSurah.verses} 
           selectedLang={selectedLang}
           isEnVisible={isEnVisible}
           onSearch={onSearch} 
@@ -166,6 +168,7 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
           removeTag={removeTag}
           loading={loading}
           markAsFavorite={markAsFavorite}
+          isMobile= {isMobile}
         />
       </div>
 

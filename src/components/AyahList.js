@@ -14,6 +14,7 @@ const AyahList = ({
   loading,
   markAsFavorite,
   isEnVisible,
+  isMobile,
   ...restProps
 }) => {
   let searchId = '';
@@ -22,7 +23,6 @@ const AyahList = ({
     searchId = e.target.value;
     searchById(searchId);
   }; 
-  console.log('Rest propssdfds', restProps);
 
   return (
     <List
@@ -37,7 +37,7 @@ const AyahList = ({
                 actions={[
                 ]}
                 extra={
-                  <audio src={item.audio_url}  controls="controls" controlsList="nodownload"></audio>
+                  <audio src={item.audio_url}  controls="controls" controlsList="nodownload" style={{height: isMobile ? '30px' : '40px' }}></audio>
                 }
                 >
                 <List.Item.Meta style={{ paddingRight: 15, marginBottom: 0}}
@@ -47,18 +47,27 @@ const AyahList = ({
                     </Tooltip>
                   }
                   title={<div className={styles.arabicText + ' ' +   styles[item.audio_status]} style={{textAlign: 'right'}}>{item.ar}</div>}
-                  description={<div style={{float: 'right'}}>
-                    {
-                      isEnVisible &&
-                      <div style={{paddingTop: 10}}>{item.en}</div>
-                    }
+                  description={
+                  <div>
+                    <div className={isMobile ?styles.ayahLocalSectionMobile : styles.ayahLocalSection} >
+                      {
+                        isEnVisible &&
+                        <div style={{paddingTop: 10}}>{item.en}</div>
+                      }
                       {
                         selectedLang && 
                         <div style={{border: 'none', paddingTop: 4, paddingBottom: 8}} className={(selectedLang === 'bn' ? styles.bengliText : '') + ' ' + styles.localText}>{item[selectedLang]}</div> 
                       }
+                    </div>
+
+                    { isMobile &&
+                      <AyaTags ayahId={item.verse_id} chapterId={item.surah_id} tags={item.tags} addTag={addTag} removeTag={removeTag}/>
+                    }
                   </div>}
                 />
-                <AyaTags ayahId={item.verse_id} chapterId={item.surah_id} tags={item.tags} addTag={addTag} removeTag={removeTag}/>
+                { !isMobile &&
+                    <AyaTags ayahId={item.verse_id} chapterId={item.surah_id} tags={item.tags} addTag={addTag} removeTag={removeTag}/>
+                  }
               </List.Item>
             )}>
           </List>

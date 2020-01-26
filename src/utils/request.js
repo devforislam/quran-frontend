@@ -1,8 +1,7 @@
 import {fetch} from 'dva';
-import * as auth from '../services/auth'
+import * as auth from '../services/auth';
 
-const url = 'http://quran-api.devforislam.xyz/api';
-
+import url from '../config';
 
 export const getReqOption = () => (
   { 
