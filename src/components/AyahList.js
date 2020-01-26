@@ -13,7 +13,8 @@ const AyahList = ({
   selectedLang, 
   loading,
   markAsFavorite,
-  isEnVisible
+  isEnVisible,
+  ...restProps
 }) => {
   let searchId = '';
 
@@ -21,7 +22,8 @@ const AyahList = ({
     searchId = e.target.value;
     searchById(searchId);
   }; 
-  
+  console.log('Rest propssdfds', restProps);
+
   return (
     <List
     itemLayout="vertical"

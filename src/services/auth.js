@@ -22,10 +22,10 @@ export function check()
 {
     var token = getToken();
     if (token !== null) {
-        console.log('check login', token, typeof token, token.length, null);
+        // console.log('check login', token, typeof token, token.length, null);
         return true;
     }
-    console.log('check login tt', token);
+    // console.log('check login tt', token);
    
     return false;
 }

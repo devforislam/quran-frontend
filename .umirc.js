@@ -4,7 +4,7 @@ export default {
   routes: [
     {
       path: '/',
-      component: '../components/layouts/Layouts',
+      component: '../layouts',
       routes: [
         {
           path: '/surah',
@@ -50,8 +50,9 @@ export default {
         antd: true,
         dva: true,
         dynamicImport: false,
-        title: 'learnquran-new1',
+        title: 'Online platform to recite, listen and study the holy Quran',
         dll: false,
+        fastClick: true,
         routes: {
           exclude: [
             /models\//,

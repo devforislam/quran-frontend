@@ -10,7 +10,7 @@ import AudioPlayer from '../components/AudioPlayer';
 
 const Option = Select.Option;
 
-const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang, loading, isAudioPlaying, isEnVisible, filtered}) => {
+const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang, loading, isAudioPlaying, isEnVisible, filtered, isMobile, ...restProps}) => {
  
   function handleSurahChange(value) {
     dispatch({
@@ -93,56 +93,61 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
     searchId = e.target.value;
     onSearch(searchId);
   }; 
-
+  console.log('Others props', restProps);
   return (
-    <div style={{margin: -24}}>
+    <div style={{
+      // margin: -24
+      }}>
        <BackTop />
       <Row style={{
             // margin: -24,
-            padding: 24,
+            padding: isMobile ? '15px 10px' : 24,
             backgroundColor: '#d48806',
             // borderRadius: '0 0 26px 26px',
             border: '0px solid',
             }}>
         <Col className="gutter-row" style={{padding: 5}} md={6} sm={24} xs={24}>
           <div className="gutter-box">
-          <Select 
-            showSearch
-            defaultValue="Select Surah"
-            value={currentSurah.id} 
-            style={{ width: '100%' }} onChange={handleSurahChange}
-            filterOption={onFilter}
-            suffix="sr"
-            >
-            {surahList && surahList.map((item) => (<Option key={item.id} value={item.id}> {(''+item.id).padStart(3,'0')}. {item.name}</Option>))}
-          </Select>
+            <Select 
+              showSearch
+              defaultValue="Select Surah"
+              value={currentSurah.id} 
+              style={{ width: '100%' }} onChange={handleSurahChange}
+              filterOption={onFilter}
+              suffix="sr"
+              >
+              {surahList && surahList.map((item) => (<Option key={item.id} value={item.id}> {(''+item.id).padStart(3,'0')}. {item.name}</Option>))}
+            </Select>
           </div>
         </Col>
         <Col className="gutter-row" style={{padding: 5}} md={6} sm={24} xs={24}>
-        <div className="gutter-box">
-          <Input
-            placeholder="Ayah 1-3, 5, 10-15"
-            // onSearch={value => onSearch(value)}
-            onChange={onInputChange}
-            style= {{width: '100%' }}
-            value={filtered}
-            suffix={<Badge count={currentSurah.verses.length} overflowCount={999} style={{ backgroundColor: '#fff', color: 'rgba(27, 27, 27, 0.62)', boxShadow: '0 0 0 1px #d9d9d9 inset' }}
-            />}
-          />
-          </div>
+          <div className="gutter-box">
+            <Input
+              placeholder="Ayah 1-3, 5, 10-15"
+              // onSearch={value => onSearch(value)}
+              onChange={onInputChange}
+              style= {{width: '100%' }}
+              value={filtered}
+              suffix={<Badge count={currentSurah.verses.length} overflowCount={999} style={{ backgroundColor: '#fff', color: 'rgba(27, 27, 27, 0.62)', boxShadow: '0 0 0 1px #d9d9d9 inset' }}
+              />}
+            />
+            </div>
         </Col>
 
         <Col className="gutter-row" style={{padding: 5}} md={6} sm={24} xs={24}>
           <AudioPlayer srcFiles={currentSurah.verses.map(item => item.audio_url)} setAudioStatus={setAudioStatus}></AudioPlayer>
+        </Col>
 
-        </Col>   
 
-        <Col className="gutter-row" style={{padding: 5}} md={6} sm={24} xs={24}>
-        <Switch style={{marginRight: 5}} checkedChildren="en" unCheckedChildren="en" defaultChecked onChange= {onChangeEn} />
+        <Col className="gutter-row" style={{padding: 5}} md={1} sm={6} xs={6}>
+          <Switch style={{marginRight: 5}} checkedChildren="en" unCheckedChildren="en" defaultChecked onChange= {onChangeEn} />
+
+          </Col>
+        <Col className="gutter-row" style={{padding: 5}} md={5} sm={18} xs={18}>
           <Select 
             showSearch
             value={getLanguage()}
-            style={{ width: '80%' }} 
+            style={{ width: '100%' }} 
             onChange={handleLanguageChange}
             >
             <Option value="">Select Language</Option>
@@ -152,7 +157,7 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
         </Col>     
              
       </Row>
-      <div style={{padding: 24}} effect='fade'>
+      <div style={{padding: isMobile ? '15px 10px' : 24}} effect='fade'>
         <AyahList verses={currentSurah.verses} 
           selectedLang={selectedLang}
           isEnVisible={isEnVisible}
@@ -169,4 +174,4 @@ const Surahs = ({ dispatch, surahList, currentSurah, languageList, selectedLang,
 };
 
 // export default surahs;
-export default connect(({ surahs }) => ({...surahs}))(Surahs);
+export default connect(({ surahs, global }) => ({...surahs, ...global}))(Surahs);

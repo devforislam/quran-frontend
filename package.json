@@ -10,6 +10,7 @@
   "dependencies": {
     "antd": "^3.19.5",
     "dva": "^2.6.0-beta.6",
+    "enquire-js": "^0.2.1",
     "howler": "^2.1.2",
     "react": "^16.8.6",
     "react-check-auth": "^0.2.0-alpha.2",
