@@ -53,29 +53,28 @@ const AyahListMobile = ({
             </Row>}
             >
               <Card.Meta 
-            title={<div className={styles.arabicText + ' ' +   styles[item.audio_status]} style={{textAlign: 'right'}}>{item.ar}</div>}
+                className={mStyles.cardMetaTitle}
+                title={<div className={styles.arabicText + ' ' +   styles[item.audio_status]} style={{textAlign: 'right'}}>{item.ar}</div>}
 
-              description={
-                <div>
-                <div className={isMobile ?styles.ayahLocalSectionMobile : styles.ayahLocalSection} >
-                  {
-                    isEnVisible &&
-                    <div style={{paddingTop: 10}}>{item.en}</div>
-                  }
-                  {
-                    selectedLang && 
-                    <div style={{border: 'none', paddingTop: 4, paddingBottom: 8}} className={(selectedLang === 'bn' ? styles.bengliText : '') + ' ' + styles.localText}>{item[selectedLang]}</div> 
-                  }
-                </div>
-  
-                { isMobile &&
-                  <AyaTags ayahId={item.verse_id} chapterId={item.surah_id} tags={item.tags} addTag={addTag} removeTag={removeTag}/>
+                description={
+                  <div>
+                    <div className={isMobile ?styles.ayahLocalSectionMobile : styles.ayahLocalSection} >
+                      {
+                        isEnVisible &&
+                        <div style={{paddingTop: 10}}>{item.en}</div>
+                      }
+                      {
+                        selectedLang && 
+                        <div style={{border: 'none', paddingTop: 4, paddingBottom: 8}} className={(selectedLang === 'bn' ? styles.bengliText : '') + ' ' + styles.localText}>{item[selectedLang]}</div> 
+                      }
+                    </div>
+      
+                    { isMobile &&
+                      <AyaTags ayahId={item.verse_id} chapterId={item.surah_id} tags={item.tags} addTag={addTag} removeTag={removeTag}/>
+                    }
+                  </div>
                 }
-              </div>
-              }>
-
-              </Card.Meta>
-            
+              />
 
             </Card>
           {/* <List.Item.Meta style={{ paddingRight: 15, marginBottom: 0}}
